@@ -1,0 +1,24 @@
+BaseURL: 'https://example.com/'
+
+key: 'xxx'
+
+v1: 10
+
+v2: 20
+
+v3: 30
+
+t1: 15
+
+t2: 25
+
+t3: 40
+
+warn_text: "Comboeye suspect you are cheating!If you were,please stop it!"
+
+kick_text: "Comboeye think you were cheating and kicked your from th game."
+
+ban_text: "Comboeye think you were cheating and banned your from th game."
+
+#If you want to contact to me,please open an issue instead of ask me for my qq number or WeChat id,3q.
+#I know it's hard to prevent all hackers,but you can help us improve the model quality by submit hackers' datasets.
