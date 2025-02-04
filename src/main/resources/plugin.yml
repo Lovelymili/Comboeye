@@ -1,0 +1,3 @@
+name: Comboeye
+version: '${project.version}'
+main: org.mili.aiac.Comboeye
