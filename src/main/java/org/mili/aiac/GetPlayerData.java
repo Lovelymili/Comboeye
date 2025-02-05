@@ -70,7 +70,9 @@ public class GetPlayerData implements Listener {
         }
     }
     public int GetCheatLevel(PlayerAttackData data) throws IOException {
-        String distance = String.valueOf(data.distance);
+        String distance_x = String.valueOf(data.distance_x);
+        String distance_y = String.valueOf(data.distance_y);
+        String distance_z = String.valueOf(data.distance_z);
         String cps = String.valueOf(data.cps);
         String yaw = String.valueOf(data.yaw);
         String pitch = String.valueOf(data.pitch);
@@ -82,7 +84,9 @@ public class GetPlayerData implements Listener {
         HttpGet httpget = new HttpGet(
                 BaseURL +
                         "?key="+ key +
-                        "&distance=" + distance +
+                        "&distance_x" + distance_x +
+                        "&distance_y" + distance_y +
+                        "&distance_z" + distance_z +
                         "&cps=" + cps +
                         "&yaw=" + yaw +
                         "&pitch=" + pitch +
@@ -126,13 +130,15 @@ public class GetPlayerData implements Listener {
 
     }
     public int GetData(Player p1,Entity entity,int count) throws IOException {
-        double distance = GetDistance(p1,entity);
+        double[] distance = GetDistance(p1,entity);
         double CPS = GetCPS(p1);
         PlayerAttackData it = new PlayerAttackData();
         PlayerRotation rotations = new PlayerRotation();
         rotations.update(p1);
         it.cps = (double) CPS;
-        it.distance = distance;
+        it.distance_x = distance[0];
+        it.distance_y = distance[1];
+        it.distance_z = distance[2];
         it.yaw = p1.getLocation().getYaw();
         it.pitch = p1.getLocation().getPitch();
         it.yaw_a = rotations.getYawAcceleration(p1);
@@ -141,7 +147,7 @@ public class GetPlayerData implements Listener {
         return GetCheatLevel(it);
     }
 
-    public double GetDistance(Player p1, Entity entity) {
+    public double[] GetDistance(Player p1, Entity entity) {
         ProcessData ProcessData = new ProcessData();
         return ProcessData.ProcessDistance(p1, entity);
     }
@@ -222,7 +228,7 @@ public class GetPlayerData implements Listener {
         }
     }
     private static class PlayerAttackData {
-        private double distance,cps,yaw,pitch,yaw_a,pitch_a,count;
+        private double distance_x,distance_y,distance_z,cps,yaw,pitch,yaw_a,pitch_a,count;
     }
 
 

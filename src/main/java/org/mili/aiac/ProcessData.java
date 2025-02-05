@@ -6,13 +6,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 public class ProcessData {
-    public double ProcessDistance(Player p1, Entity entity) {
+    public double[] ProcessDistance(Player p1, Entity entity) {
         Location Location = p1.getLocation();
         BoundingBox BoundingBox = getBoundingBox(entity);
         double dx = calculateAxisDistance(Location.getX(), BoundingBox.getMinX(), BoundingBox.getMaxX());
         double dy = calculateAxisDistance(Location.getY(), BoundingBox.getMinY(), BoundingBox.getMaxY());
         double dz = calculateAxisDistance(Location.getZ(), BoundingBox.getMinZ(), BoundingBox.getMaxZ());
-        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+        return new double[]{dx,dy,dz};
 
     }
     private static double calculateAxisDistance(double point, double min, double max) {
